@@ -4,12 +4,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="suikut.Views.LoginView"
-             x:DataType="vm:LoginViewModel">
+             x:Class="suikut.Views.RegisterView"
+             x:DataType="vm:RegisterViewModel">
     <StackPanel Margin="20" VerticalAlignment="Center">
         <TextBlock FontSize="30"
                    Margin="10"
-                   HorizontalAlignment="Center">SE CONNECTER</TextBlock>
+                   HorizontalAlignment="Center">CREER UN COMPTE</TextBlock>
         <TextBox Margin="10"
                  Width="350"
                  AcceptsReturn="True"
@@ -17,18 +17,27 @@
         <TextBox Margin="10"
                  Width="350"
                  AcceptsReturn="True"
+                 Watermark="email"/>
+        <TextBox Margin="10"
+                 Width="350"
+                 AcceptsReturn="True"
                  PasswordChar="*"
                  Watermark="mot de passe"/>
+        <TextBox Margin="10"
+                 Width="350"
+                 AcceptsReturn="True"
+                 PasswordChar="*"
+                 Watermark="confirmation mot de passe"/>
         <Button Margin="10"
                 Width="250"
                 HorizontalAlignment="Center"
-                HorizontalContentAlignment="Center">valider</Button>
+                HorizontalContentAlignment="Center">créer</Button>
         <Button Margin="10"
                 Width="250"
                 HorizontalAlignment="Center"
                 HorizontalContentAlignment="Center"
                 x:CompileBindings="False"
-                Command="{Binding $parent[Window].DataContext.Register}">créer un compte</Button>
+                Command="{Binding $parent[Window].DataContext.RegisterCancel}">annuler</Button>
         
     </StackPanel>
 </UserControl>

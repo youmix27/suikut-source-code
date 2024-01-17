@@ -19,7 +19,7 @@ namespace suikut.Models
         public virtual DbSet<Ambiance> Ambiances { get; set; } = null!;
         public virtual DbSet<Difficulte> Difficultes { get; set; } = null!;
         public virtual DbSet<Musique> Musiques { get; set; } = null!;
-        public virtual DbSet<Niveau> Niveaus { get; set; } = null!;
+        public virtual DbSet<Niveau> Niveaux { get; set; } = null!;
         public virtual DbSet<Score> Scores { get; set; } = null!;
         public virtual DbSet<Utilisateur> Utilisateurs { get; set; } = null!;
 

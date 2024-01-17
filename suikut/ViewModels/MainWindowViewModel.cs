@@ -22,8 +22,12 @@ public class MainWindowViewModel : ViewModelBase
         private set => this.RaiseAndSetIfChanged(ref _contentViewModel, value);
     }
 
-    public void MainMenu()
+    public void Register()
     {
-        ContentViewModel = new AddItemViewModel();
+        ContentViewModel = new RegisterViewModel();
+    }
+    public void RegisterCancel()
+    {
+        ContentViewModel = new LoginViewModel();
     }
 }
