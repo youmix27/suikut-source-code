@@ -3,7 +3,11 @@
   <component name="AvaloniaProject">
     <option name="projectPerEditor">
       <map>
+        <entry key="suikut/App.axaml" value="suikut/suikut.csproj" />
+        <entry key="suikut/Views/AddItemView.axaml" value="suikut/suikut.csproj" />
+        <entry key="suikut/Views/LoginView.axaml" value="suikut/suikut.csproj" />
         <entry key="suikut/Views/MainWindow.axaml" value="suikut/suikut.csproj" />
+        <entry key="suikut/Views/ToDoListView.axaml" value="suikut/suikut.csproj" />
       </map>
     </option>
   </component>

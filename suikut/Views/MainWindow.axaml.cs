@@ -12,17 +12,5 @@ public partial class MainWindow : Window
         InitializeComponent();
     }
 
-    public void ButtonClicked(object source, RoutedEventArgs args)
-    {
-        if (double.TryParse(Celsius.Text, out double C))
-        {
-            var F = C * (9d / 5d) + 32;
-            Fahrenheit.Text = F.ToString("0.0");
-        }
-        else
-        {
-            Celsius.Text = "0";
-            Fahrenheit.Text = "0";
-        }
-    }
+    
 }

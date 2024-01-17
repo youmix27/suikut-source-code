@@ -1,8 +1,29 @@
-﻿namespace suikut.ViewModels;
+﻿using suikut.Services;
+using ReactiveUI;
+
+namespace suikut.ViewModels;
 
 public class MainWindowViewModel : ViewModelBase
 {
-#pragma warning disable CA1822 // Mark members as static
-    public string Greeting => "Welcome to Avalonia! YOUHOU";
-#pragma warning restore CA1822 // Mark members as static
+    private ViewModelBase _contentViewModel;
+
+    public MainWindowViewModel()
+    {
+        var service = new ToDoListService();
+        Login = new LoginViewModel();
+        _contentViewModel = Login;
+    }
+
+    public LoginViewModel Login { get; }
+    
+    public ViewModelBase ContentViewModel
+    {
+        get => _contentViewModel;
+        private set => this.RaiseAndSetIfChanged(ref _contentViewModel, value);
+    }
+
+    public void MainMenu()
+    {
+        ContentViewModel = new AddItemViewModel();
+    }
 }
