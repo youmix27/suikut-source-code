@@ -6,6 +6,7 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="suikut.Views.LoginView"
              x:DataType="vm:LoginViewModel">
+    
     <StackPanel Margin="20" VerticalAlignment="Center">
         <TextBlock FontSize="30"
                    Margin="10"

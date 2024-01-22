@@ -22,6 +22,7 @@ C:\Users\m.fraisse\.nuget\packages\avalonia.themes.fluent\11.0.6\lib\net6.0\Aval
 C:\Users\m.fraisse\.nuget\packages\avalonia.themes.simple\11.0.6\lib\net6.0\Avalonia.Themes.Simple.dll
 C:\Users\m.fraisse\.nuget\packages\avalonia.win32\11.0.6\lib\net6.0\Avalonia.Win32.dll
 C:\Users\m.fraisse\.nuget\packages\avalonia.x11\11.0.6\lib\net6.0\Avalonia.X11.dll
+C:\Users\m.fraisse\.nuget\packages\bcrypt.net-next\4.0.3\lib\net6.0\BCrypt.Net-Next.dll
 C:\Users\m.fraisse\.nuget\packages\dynamicdata\7.9.5\lib\net6.0\DynamicData.dll
 C:\Users\m.fraisse\.nuget\packages\harfbuzzsharp\7.3.0\lib\net6.0\HarfBuzzSharp.dll
 C:\Users\m.fraisse\.nuget\packages\microcom.runtime\0.11.0\lib\net5.0\MicroCom.Runtime.dll
@@ -38,8 +39,8 @@ C:\Users\m.fraisse\.nuget\packages\microsoft.entityframeworkcore.sqlserver\6.0.2
 C:\Users\m.fraisse\.nuget\packages\microsoft.extensions.caching.abstractions\6.0.0\lib\netstandard2.0\Microsoft.Extensions.Caching.Abstractions.dll
 C:\Users\m.fraisse\.nuget\packages\microsoft.extensions.caching.memory\6.0.1\lib\netstandard2.0\Microsoft.Extensions.Caching.Memory.dll
 C:\Users\m.fraisse\.nuget\packages\microsoft.extensions.configuration.abstractions\6.0.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.Abstractions.dll
-C:\Users\m.fraisse\.nuget\packages\microsoft.extensions.dependencyinjection.abstractions\6.0.0\lib\net6.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
-C:\Users\m.fraisse\.nuget\packages\microsoft.extensions.dependencyinjection\6.0.1\lib\net6.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\m.fraisse\.nuget\packages\microsoft.extensions.dependencyinjection.abstractions\8.0.0\lib\net6.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\m.fraisse\.nuget\packages\microsoft.extensions.dependencyinjection\8.0.0\lib\net6.0\Microsoft.Extensions.DependencyInjection.dll
 C:\Users\m.fraisse\.nuget\packages\microsoft.extensions.logging.abstractions\6.0.0\lib\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
 C:\Users\m.fraisse\.nuget\packages\microsoft.extensions.logging\6.0.0\lib\netstandard2.1\Microsoft.Extensions.Logging.dll
 C:\Users\m.fraisse\.nuget\packages\microsoft.extensions.options\6.0.0\lib\netstandard2.1\Microsoft.Extensions.Options.dll
@@ -72,6 +73,7 @@ C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\6.0.26\ref\net6.0\System
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\6.0.26\ref\net6.0\System.ComponentModel.EventBasedAsync.dll
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\6.0.26\ref\net6.0\System.ComponentModel.Primitives.dll
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\6.0.26\ref\net6.0\System.ComponentModel.TypeConverter.dll
+C:\Users\m.fraisse\.nuget\packages\system.configuration.configurationmanager\8.0.0\lib\net6.0\System.Configuration.ConfigurationManager.dll
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\6.0.26\ref\net6.0\System.Configuration.dll
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\6.0.26\ref\net6.0\System.Console.dll
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\6.0.26\ref\net6.0\System.Core.dll
@@ -176,6 +178,7 @@ C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\6.0.26\ref\net6.0\System
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\6.0.26\ref\net6.0\System.Security.Cryptography.Encoding.dll
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\6.0.26\ref\net6.0\System.Security.Cryptography.OpenSsl.dll
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\6.0.26\ref\net6.0\System.Security.Cryptography.Primitives.dll
+C:\Users\m.fraisse\.nuget\packages\system.security.cryptography.protecteddata\8.0.0\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\6.0.26\ref\net6.0\System.Security.Cryptography.X509Certificates.dll
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\6.0.26\ref\net6.0\System.Security.dll
 C:\Program Files\dotnet\packs\Microsoft.NETCore.App.Ref\6.0.26\ref\net6.0\System.Security.Principal.dll

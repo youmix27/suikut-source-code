@@ -7,6 +7,7 @@
         <entry key="suikut/Views/AddItemView.axaml" value="suikut/suikut.csproj" />
         <entry key="suikut/Views/LoginView.axaml" value="suikut/suikut.csproj" />
         <entry key="suikut/Views/MainWindow.axaml" value="suikut/suikut.csproj" />
+        <entry key="suikut/Views/RegisterView.axaml" value="suikut/suikut.csproj" />
         <entry key="suikut/Views/ToDoListView.axaml" value="suikut/suikut.csproj" />
       </map>
     </option>

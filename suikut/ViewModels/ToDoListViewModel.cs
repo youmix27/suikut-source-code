@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using suikut.Models;
 using suikut.Services;
 
@@ -7,11 +9,17 @@ namespace suikut.ViewModels;
 
 public class ToDoListViewModel : ViewModelBase
 {
-    public ToDoListViewModel()
+    private ISuichukoService service;
+    
+    public ToDoListViewModel(SuichukoContext context)
     {
-        ISuichukoService service = new SuichukoService();
-        ListItems = new ObservableCollection<ToDoItem>(items);
+        service =  new SuichukoService(context);
+        musiques = new ObservableCollection<Musique>(service.FindAllMusiques().Cast<Musique>());
+        foreach (var musique in musiques)
+        {
+            Console.WriteLine(musique.Libelle);
+        }
     }
 
-    public ObservableCollection<ToDoItem> ListItems { get; }
+    public ObservableCollection<Musique> musiques { get; set; }
 }

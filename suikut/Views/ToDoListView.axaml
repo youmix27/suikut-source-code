@@ -6,22 +6,11 @@
              mc:Ignorable="d" d:DesignWidth="250" d:DesignHeight="450"
              x:Class="suikut.Views.ToDoListView"
              x:DataType="vm:ToDoListViewModel">
-    <DockPanel>
-        <Button DockPanel.Dock="Bottom"
-                HorizontalAlignment="Stretch"
-                HorizontalContentAlignment="Center"
-                x:CompileBindings="False"
-                Command="{Binding $parent[Window].DataContext.AddItem}">
-            Add Item
-        </Button>
-        <ItemsControl ItemsSource="{Binding ListItems}">
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <CheckBox Margin="4"
-                              IsChecked="{Binding IsChecked}"
-                              Content="{Binding Description}"/>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
-    </DockPanel>
+    <UserControl.DataContext>
+        <vm:LoginViewModel></vm:LoginViewModel>
+    </UserControl.DataContext>
+    <Grid Margin="10">
+        <DataGrid AutoGenerateColumns="True" ItemsSource="{Binding musiques}" />
+    </Grid>
+    
 </UserControl>

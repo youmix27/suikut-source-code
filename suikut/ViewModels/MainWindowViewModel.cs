@@ -1,5 +1,6 @@
 ﻿using suikut.Services;
 using ReactiveUI;
+using suikut.Models;
 
 namespace suikut.ViewModels;
 
@@ -9,7 +10,6 @@ public class MainWindowViewModel : ViewModelBase
 
     public MainWindowViewModel()
     {
-        var service = new ToDoListService();
         Login = new LoginViewModel();
         _contentViewModel = Login;
     }
