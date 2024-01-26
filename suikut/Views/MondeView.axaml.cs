@@ -4,9 +4,9 @@ using Avalonia.Markup.Xaml;
 
 namespace suikut.Views;
 
-public partial class AddItemView : UserControl
+public partial class MondeView : UserControl
 {
-    public AddItemView()
+    public MondeView()
     {
         InitializeComponent();
     }

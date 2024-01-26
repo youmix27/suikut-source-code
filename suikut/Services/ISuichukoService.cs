@@ -5,6 +5,8 @@ namespace suikut.Services;
 
 public interface ISuichukoService
 {
+    Utilisateur FindUtilisateurByPseudo(string pseudo);
+    
     IEnumerable<Ambiance> FindAllAmbiances();
     void InsertAmbiance(Ambiance ambiance);
     void UpdateAmbiance(Ambiance ambiance);

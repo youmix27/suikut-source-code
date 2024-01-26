@@ -11,22 +11,26 @@
                    Margin="10"
                    HorizontalAlignment="Center">CREER UN COMPTE</TextBlock>
         <TextBox Name = "TextBoxPseudo"
+                 Text="{Binding Pseudo}"
                  Margin="10"
                  Width="350"
                  AcceptsReturn="True"
                  Watermark="pseudo"/>
         <TextBox Name = "TextBoxEmail"
+                 Text="{Binding Email}"
                  Margin="10"
                  Width="350"
                  AcceptsReturn="True"
                  Watermark="email"/>
         <TextBox Name = "TextBoxPassword1"
+                 Text="{Binding MotDePasse}"
                  Margin="10"
                  Width="350"
                  AcceptsReturn="True"
                  PasswordChar="*"
                  Watermark="mot de passe"/>
         <TextBox Name = "TextBoxPassword2"
+                 Text="{Binding MotDePasseConfirme}"
                  Margin="10"
                  Width="350"
                  AcceptsReturn="True"
@@ -42,7 +46,7 @@
                 HorizontalAlignment="Center"
                 HorizontalContentAlignment="Center"
                 x:CompileBindings="False"
-                Command="{Binding $parent[Window].DataContext.RegisterCancel}">annuler</Button>
+                Command="{Binding $parent[Window].DataContext.GoLogin}">annuler</Button>
         
     </StackPanel>
 </UserControl>

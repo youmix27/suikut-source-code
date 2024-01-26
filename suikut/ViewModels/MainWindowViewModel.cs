@@ -26,8 +26,13 @@ public class MainWindowViewModel : ViewModelBase
     {
         ContentViewModel = new RegisterViewModel();
     }
-    public void RegisterCancel()
+    public void GoLogin()
     {
         ContentViewModel = new LoginViewModel();
+    }
+    
+    public void GoLevelMenu()
+    {
+        ContentViewModel = new LevelSelectorViewModel();
     }
 }

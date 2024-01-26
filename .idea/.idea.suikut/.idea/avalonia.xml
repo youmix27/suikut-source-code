@@ -5,8 +5,11 @@
       <map>
         <entry key="suikut/App.axaml" value="suikut/suikut.csproj" />
         <entry key="suikut/Views/AddItemView.axaml" value="suikut/suikut.csproj" />
+        <entry key="suikut/Views/LevelSelectorView.axaml" value="suikut/suikut.csproj" />
         <entry key="suikut/Views/LoginView.axaml" value="suikut/suikut.csproj" />
+        <entry key="suikut/Views/MainMenuView.axaml" value="suikut/suikut.csproj" />
         <entry key="suikut/Views/MainWindow.axaml" value="suikut/suikut.csproj" />
+        <entry key="suikut/Views/MondeView.axaml" value="suikut/suikut.csproj" />
         <entry key="suikut/Views/RegisterView.axaml" value="suikut/suikut.csproj" />
         <entry key="suikut/Views/ToDoListView.axaml" value="suikut/suikut.csproj" />
       </map>

@@ -16,6 +16,14 @@ public class SuichukoService : ISuichukoService
         _context = context;
     }
 
+    public Utilisateur FindUtilisateurByPseudo(string pseudo)
+    {
+
+        Utilisateur utilisateur = _context.Utilisateurs.Where(u => u.Pseudo == pseudo).FirstOrDefault();
+
+        return utilisateur;
+    }
+    
     public void DeleteAmbiance(long id)
     {
         try
