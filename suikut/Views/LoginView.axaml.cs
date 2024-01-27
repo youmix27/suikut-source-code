@@ -1,3 +1,4 @@
+using System;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
@@ -29,6 +30,9 @@ public partial class LoginView : UserControl
             return;
         }
         var mainMenu = new MainMenuView();
+        // On sauvegarde les inforamtions utilies sur l'utilisateur connecté dans nos variables d'environnement
+        Environment.SetEnvironmentVariable("USER_PSEUDO", utilisateur.Pseudo);
+        Environment.SetEnvironmentVariable("USER_ID", utilisateur.Id.ToString());
         this.Content = mainMenu;
     }
 }

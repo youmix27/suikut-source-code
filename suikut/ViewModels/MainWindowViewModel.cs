@@ -1,4 +1,5 @@
-﻿using suikut.Services;
+﻿using System;
+using suikut.Services;
 using ReactiveUI;
 using suikut.Models;
 
@@ -24,6 +25,9 @@ public class MainWindowViewModel : ViewModelBase
 
     public void Register()
     {
+        // On vide les variables d'environnement à la déconnexion
+        Environment.SetEnvironmentVariable("USER_PSEUDO", "");
+        Environment.SetEnvironmentVariable("USER_ID", "");
         ContentViewModel = new RegisterViewModel();
     }
     public void GoLogin()

@@ -16,12 +16,26 @@ public class SuichukoService : ISuichukoService
         _context = context;
     }
 
-    public Utilisateur FindUtilisateurByPseudo(string pseudo)
+/*
+ *
+ *------------------------------------------------------
+ * Service d'accès à la Base de Données Suichuko
+ *------------------------------------------------------
+ * 
+ */
+
+#region Ambiance
+
+    /*
+     * 
+     *  Méthode lié à la table AMBIANCE
+     * 
+     */
+    
+    public ICollection<Niveau> FindAmbianceNiveaux(Ambiance ambiance)
     {
-
-        Utilisateur utilisateur = _context.Utilisateurs.Where(u => u.Pseudo == pseudo).FirstOrDefault();
-
-        return utilisateur;
+        ICollection<Niveau> niveaux = _context.Niveaux.Where(n => n.Ambiance == ambiance).ToList();
+        return niveaux;
     }
     
     public void DeleteAmbiance(long id)
@@ -95,6 +109,16 @@ public class SuichukoService : ISuichukoService
         }
     }
     
+    #endregion
+
+#region Difficulté
+
+    /*
+     *
+     *  Méthode lié à la table AMBIANCE
+     *
+     */
+
     public void DeleteDifficulte(long id)
     {
         try
@@ -166,6 +190,10 @@ public class SuichukoService : ISuichukoService
         }
     }
     
+#endregion
+
+#region Musique
+    
     public void DeleteMusique(long id)
     {
         try
@@ -235,6 +263,18 @@ public class SuichukoService : ISuichukoService
         {
             throw;
         }
+    }
+    
+#endregion    
+
+#region Niveau
+
+    public Utilisateur FindUtilisateurByPseudo(string pseudo)
+    {
+
+        Utilisateur utilisateur = _context.Utilisateurs.Where(u => u.Pseudo == pseudo).FirstOrDefault();
+
+        return utilisateur;
     }
     
     public void DeleteNiveau(long id)
@@ -308,6 +348,10 @@ public class SuichukoService : ISuichukoService
         }
     }
     
+#endregion
+
+#region Score
+    
     public void DeleteScore(long utilisateurId, long niveauId)
     {
         try
@@ -379,6 +423,10 @@ public class SuichukoService : ISuichukoService
         }
     }
     
+#endregion
+
+#region Utilisateur
+    
     public void DeleteUtilisateur(long id)
     {
         try
@@ -449,4 +497,7 @@ public class SuichukoService : ISuichukoService
             throw;
         }
     }
+    
+#endregion    
+    
 }

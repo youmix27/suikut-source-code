@@ -5,6 +5,7 @@ namespace suikut.Services;
 
 public interface ISuichukoService
 {
+    ICollection<Niveau> FindAmbianceNiveaux(Ambiance ambiance);
     Utilisateur FindUtilisateurByPseudo(string pseudo);
     
     IEnumerable<Ambiance> FindAllAmbiances();
