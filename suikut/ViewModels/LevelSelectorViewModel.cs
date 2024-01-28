@@ -18,7 +18,7 @@ public class LevelSelectorViewModel : ViewModelBase
         ambiances = SuichukoService.FindAllAmbiances();
         foreach (var ambiance in ambiances)
         {
-            ambiance.Niveaus = SuichukoService.FindAmbianceNiveaux(ambiance);
+            ambiance.Niveaus = SuichukoService.FindNiveauxByAmbiance(ambiance);
         }
     }
     

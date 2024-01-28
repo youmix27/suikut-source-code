@@ -32,13 +32,13 @@ public class SuichukoService : ISuichukoService
      * 
      */
     
-    public ICollection<Niveau> FindAmbianceNiveaux(Ambiance ambiance)
+    public ICollection<Niveau> FindNiveauxByAmbiance(Ambiance ambiance)
     {
         ICollection<Niveau> niveaux = _context.Niveaux.Where(n => n.Ambiance == ambiance).ToList();
         return niveaux;
     }
     
-    public void DeleteAmbiance(long id)
+    public void DeleteAmbiance(int id)
     {
         try
         {
@@ -77,7 +77,7 @@ public class SuichukoService : ISuichukoService
         }
     }
 
-    public Ambiance? FindAmbiance(long id)
+    public Ambiance? FindAmbiance(int id)
     {
         try
         {
@@ -119,7 +119,7 @@ public class SuichukoService : ISuichukoService
      *
      */
 
-    public void DeleteDifficulte(long id)
+    public void DeleteDifficulte(int id)
     {
         try
         {
@@ -158,7 +158,7 @@ public class SuichukoService : ISuichukoService
         }
     }
 
-    public Difficulte? FindDifficulte(long id)
+    public Difficulte? FindDifficulte(int id)
     {
         try
         {
@@ -194,7 +194,7 @@ public class SuichukoService : ISuichukoService
 
 #region Musique
     
-    public void DeleteMusique(long id)
+    public void DeleteMusique(int id)
     {
         try
         {
@@ -233,7 +233,7 @@ public class SuichukoService : ISuichukoService
         }
     }
 
-    public Musique? FindMusique(long id)
+    public Musique? FindMusique(int id)
     {
         try
         {
@@ -277,7 +277,7 @@ public class SuichukoService : ISuichukoService
         return utilisateur;
     }
     
-    public void DeleteNiveau(long id)
+    public void DeleteNiveau(int id)
     {
         try
         {
@@ -316,7 +316,7 @@ public class SuichukoService : ISuichukoService
         }
     }
 
-    public Niveau? FindNiveau(long id)
+    public Niveau? FindNiveau(int id)
     {
         try
         {
@@ -352,7 +352,16 @@ public class SuichukoService : ISuichukoService
 
 #region Score
     
-    public void DeleteScore(long utilisateurId, long niveauId)
+    public ICollection<Score> FinScoresByNiveau(Niveau niveau)
+    {
+        ICollection<Score> scores = _context.Scores.Where(n => n.Niveau == niveau).ToList();
+        foreach (Score score in scores)
+        {
+            score.Utilisateur = _context.Utilisateurs.Where(u => u.Id == score.UtilisateurId).FirstOrDefault();
+        }
+        return scores;
+    }
+    public void DeleteScore(int utilisateurId, int niveauId)
     {
         try
         {
@@ -391,7 +400,7 @@ public class SuichukoService : ISuichukoService
         }
     }
 
-    public Score? FindScore(long utilisateurId, long niveauId)
+    public Score? FindScore(int utilisateurId, int niveauId)
     {
         try
         {
@@ -427,7 +436,7 @@ public class SuichukoService : ISuichukoService
 
 #region Utilisateur
     
-    public void DeleteUtilisateur(long id)
+    public void DeleteUtilisateur(int id)
     {
         try
         {
@@ -466,7 +475,7 @@ public class SuichukoService : ISuichukoService
         }
     }
 
-    public Utilisateur? FindUtilisateur(long id)
+    public Utilisateur? FindUtilisateur(int id)
     {
         try
         {

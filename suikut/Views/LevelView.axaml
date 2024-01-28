@@ -2,7 +2,38 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:suikut.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="suikut.Views.LevelView">
-    Welcome to Avalonia!
+             x:Class="suikut.Views.LevelView"
+             x:DataType="vm:LevelViewModel">
+    <StackPanel Margin="20" VerticalAlignment="Center">
+        <TextBlock FontSize="30"
+                    Margin="10"
+                    HorizontalAlignment="Center"
+                    Text="{Binding niveau.Libelle}"/>
+        
+        <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Tableau des scores -->
+        <DataGrid ItemsSource="{Binding scoresNiveau}">
+        <DataGrid.Columns>
+            <DataGridTextColumn Header="Utilisateur" Binding="{Binding Utilisateur.Pseudo}"/>
+            <DataGridTextColumn Header="Score" Binding="{Binding Score1}"/>
+        </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Bouton "Jouer" et cases à cocher -->
+        <StackPanel Grid.Column="1">
+            <CheckBox IsEnabled="False" IsChecked="{Binding hasMinScore}" Content="{Binding niveau.ScoreMin}"/>
+            <CheckBox IsEnabled="False" IsChecked="{Binding hasMidScore}" Content="{Binding niveau.ScoreMid}"/>
+            <CheckBox IsEnabled="False" IsChecked="{Binding hasMaxScore}" Content="{Binding niveau.ScoreMax}"/>
+            <Button Content="Jouer"/>
+        </StackPanel>
+        </Grid>
+    </StackPanel>
+    
 </UserControl>
