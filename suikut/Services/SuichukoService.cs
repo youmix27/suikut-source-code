@@ -32,11 +32,7 @@ public class SuichukoService : ISuichukoService
      * 
      */
     
-    public ICollection<Niveau> FindNiveauxByAmbiance(Ambiance ambiance)
-    {
-        ICollection<Niveau> niveaux = _context.Niveaux.Where(n => n.Ambiance == ambiance).ToList();
-        return niveaux;
-    }
+    
     
     public void DeleteAmbiance(int id)
     {
@@ -56,7 +52,7 @@ public class SuichukoService : ISuichukoService
     {
         try
         {
-            return _context.Ambiances.ToList();
+            return _context.Ambiances.Include(a => a.Niveaus).ToList();
         }
         catch
         {
@@ -269,13 +265,13 @@ public class SuichukoService : ISuichukoService
 
 #region Niveau
 
-    public Utilisateur FindUtilisateurByPseudo(string pseudo)
+    public ICollection<Niveau> FindNiveauxByAmbiance(Ambiance ambiance)
     {
-
-        Utilisateur utilisateur = _context.Utilisateurs.Where(u => u.Pseudo == pseudo).FirstOrDefault();
-
-        return utilisateur;
+        ICollection<Niveau> niveaux = _context.Niveaux.Where(n => n.Ambiance == ambiance).ToList();
+        return niveaux;
     }
+
+    
     
     public void DeleteNiveau(int id)
     {
@@ -351,14 +347,10 @@ public class SuichukoService : ISuichukoService
 #endregion
 
 #region Score
-    
-    public ICollection<Score> FinScoresByNiveau(Niveau niveau)
+
+    public IEnumerable<Score> FinScoresByNiveauOrderByScore(Niveau niveau)
     {
-        ICollection<Score> scores = _context.Scores.Where(n => n.Niveau == niveau).ToList();
-        foreach (Score score in scores)
-        {
-            score.Utilisateur = _context.Utilisateurs.Where(u => u.Id == score.UtilisateurId).FirstOrDefault();
-        }
+        IEnumerable<Score> scores = _context.Scores.Include(s => s.Utilisateur).Where(s => s.Niveau == niveau).OrderByDescending(s => s.Score1).ToList();
         return scores;
     }
     public void DeleteScore(int utilisateurId, int niveauId)
@@ -435,6 +427,14 @@ public class SuichukoService : ISuichukoService
 #endregion
 
 #region Utilisateur
+
+    public Utilisateur FindUtilisateurByPseudo(string pseudo)
+    {
+
+        Utilisateur utilisateur = _context.Utilisateurs.Where(u => u.Pseudo == pseudo).FirstOrDefault();
+
+        return utilisateur;
+    }
     
     public void DeleteUtilisateur(int id)
     {
@@ -449,7 +449,7 @@ public class SuichukoService : ISuichukoService
             throw;
         }
     }
-
+    
     public IEnumerable<Utilisateur> FindAllUtilisateurs()
     {
         try

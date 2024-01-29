@@ -6,34 +6,58 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="suikut.Views.LevelView"
              x:DataType="vm:LevelViewModel">
-    <StackPanel Margin="20" VerticalAlignment="Center">
-        <TextBlock FontSize="30"
+    <StackPanel Margin="20" >
+        <TextBlock FontSize="50"
                     Margin="10"
+                    VerticalAlignment="Top"
                     HorizontalAlignment="Center"
                     Text="{Binding niveau.Libelle}"/>
         
-        <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
+        <Grid >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
 
-        <!-- Tableau des scores -->
-        <DataGrid ItemsSource="{Binding scoresNiveau}">
-        <DataGrid.Columns>
-            <DataGridTextColumn Header="Utilisateur" Binding="{Binding Utilisateur.Pseudo}"/>
-            <DataGridTextColumn Header="Score" Binding="{Binding Score1}"/>
-        </DataGrid.Columns>
-        </DataGrid>
+            <!-- Tableau des scores -->
+            <DataGrid Margin="20" 
+                      ItemsSource="{Binding scoresNiveau}"
+                      GridLinesVisibility="All"
+                      BorderThickness="1"
+                      HorizontalAlignment="Center">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Score" Binding="{Binding Score1}"/>
+                    <DataGridTextColumn Header="Pseudo" Binding="{Binding Utilisateur.Pseudo}"/>
+                </DataGrid.Columns>
+            </DataGrid>
 
-        <!-- Bouton "Jouer" et cases à cocher -->
-        <StackPanel Grid.Column="1">
-            <CheckBox IsEnabled="False" IsChecked="{Binding hasMinScore}" Content="{Binding niveau.ScoreMin}"/>
-            <CheckBox IsEnabled="False" IsChecked="{Binding hasMidScore}" Content="{Binding niveau.ScoreMid}"/>
-            <CheckBox IsEnabled="False" IsChecked="{Binding hasMaxScore}" Content="{Binding niveau.ScoreMax}"/>
-            <Button Content="Jouer"/>
-        </StackPanel>
+            <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Votre Score : "/>
+                    <TextBlock Text="{Binding scoreJoueur.Score1}"></TextBlock>
+                </StackPanel>
+                <TextBlock Text="objectifs :" Margin="10"/>
+                <CheckBox IsEnabled="False" IsChecked="{Binding hasMinScore}" Content="{Binding niveau.ScoreMin}"/>
+                <CheckBox IsEnabled="False" IsChecked="{Binding hasMidScore}" Content="{Binding niveau.ScoreMid}"/>
+                <CheckBox IsEnabled="False" IsChecked="{Binding hasMaxScore}" Content="{Binding niveau.ScoreMax}"/>
+                
+            </StackPanel>
         </Grid>
+        <Button Content="Jouer"
+                Margin="10"
+                Width="250"
+                HorizontalAlignment="Center"
+                HorizontalContentAlignment="Center"
+                Command="{Binding $parent[Window].((vm:MainWindowViewModel)DataContext).PlayLevel}" 
+                CommandParameter="{Binding niveau}"/>
+        
+        <Button Content="Annuler"
+                Margin="10"
+                Width="250"
+                HorizontalAlignment="Center"
+                HorizontalContentAlignment="Center"
+                x:CompileBindings="False"
+                Command="{Binding $parent[Window].DataContext.GoLevelSelecorMenu}" />
     </StackPanel>
     
 </UserControl>

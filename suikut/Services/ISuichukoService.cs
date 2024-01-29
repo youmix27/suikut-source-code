@@ -5,7 +5,8 @@ namespace suikut.Services;
 
 public interface ISuichukoService
 {
-    ICollection<Score> FinScoresByNiveau(Niveau niveau);
+    
+    IEnumerable<Score> FinScoresByNiveauOrderByScore(Niveau niveau);
     ICollection<Niveau> FindNiveauxByAmbiance(Ambiance ambiance);
     Utilisateur FindUtilisateurByPseudo(string pseudo);
     

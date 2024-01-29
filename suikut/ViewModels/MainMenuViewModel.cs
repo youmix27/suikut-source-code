@@ -1,6 +1,6 @@
 namespace suikut.ViewModels;
 
-public class MainMenuViewModel
+public class MainMenuViewModel : ViewModelBase
 {
     
 }

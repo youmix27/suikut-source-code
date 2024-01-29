@@ -1,16 +1,21 @@
 ﻿using System;
 using suikut.Services;
 using ReactiveUI;
+using Splat;
 using suikut.Models;
+using suikut.ViewModels.Niveaux;
 
 namespace suikut.ViewModels;
 
 public class MainWindowViewModel : ViewModelBase
 {
     private ViewModelBase _contentViewModel;
+    
+    private readonly ISuichukoService SuichukoService; 
 
     public MainWindowViewModel()
     {
+        SuichukoService = Locator.Current.GetService<ISuichukoService>();
         Login = new LoginViewModel();
         Register = new RegisterViewModel();
         LevelSelector = new LevelSelectorViewModel();
@@ -50,5 +55,23 @@ public class MainWindowViewModel : ViewModelBase
     {
         LevelMenu = new LevelViewModel((Niveau)niveau);
         ContentViewModel = LevelMenu;
+    }
+
+    public void PlayLevel(object niveauObj)
+    {
+        Niveau niveau = (Niveau)niveauObj;
+        
+        // Définir le string qui contient le nom du view model
+        string nomViewModel = "suikut.ViewModels.Niveaux." + niveau.Libelle + "LevelViewModel,suikut.ViewModels.Niveaux";
+
+        // Obtenir le type du view model à partir du nom
+        Type typeViewModel = Type.GetType(nomViewModel);
+
+        // Résoudre le view model à partir du conteneur Splat
+        object viewModelObj = Locator.Current.GetService(typeViewModel);
+
+        dynamic viewModel = Convert.ChangeType(viewModelObj, typeViewModel);
+        
+        ContentViewModel = viewModel;
     }
 }

@@ -6,6 +6,7 @@ using Avalonia.Markup.Xaml;
 using MsBox.Avalonia;
 using MsBox.Avalonia.Dto;
 using MsBox.Avalonia.Enums;
+using Splat;
 using suikut.Models;
 using suikut.Services;
 
@@ -13,17 +14,17 @@ namespace suikut.Views;
 
 public partial class LoginView : UserControl
 {
-    private ISuichukoService service;
+    private readonly ISuichukoService SuichukoService;
     
     public LoginView()
     {
-        service =  new SuichukoService(new SuichukoContext());
+        SuichukoService =  Locator.Current.GetService<ISuichukoService>();
         InitializeComponent();
     }
     
     public void Login(object source, RoutedEventArgs args)
     {
-        Utilisateur utilisateur = service.FindUtilisateurByPseudo(TextBoxPseudo.Text);
+        Utilisateur utilisateur = SuichukoService.FindUtilisateurByPseudo(TextBoxPseudo.Text);
         if (utilisateur == null || !BCrypt.Net.BCrypt.Verify(TextBoxMdp.Text, utilisateur.HashMdp))
         {
             TextBlockErreur.IsVisible = true;
