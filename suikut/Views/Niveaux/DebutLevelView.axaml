@@ -3,6 +3,15 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="suikut.Views.Niveaux.DebutLevelView">
-    Welcome to Avalonia!
+             xmlns:vm="using:suikut.ViewModels.Niveaux"
+             xmlns:viewModelsSource="clr-namespace:suikut.ViewModels"
+             x:Class="suikut.Views.Niveaux.DebutLevelView"
+             x:DataType="vm:DebutLevelViewModel">
+    <StackPanel VerticalAlignment="Center" Width="500" HorizontalAlignment="Center" Margin="10">
+        <TextBlock Text="{Binding scoreActuel}"  HorizontalAlignment="Center" FontSize="30"/>
+        <Button Content="+1" Command="{Binding Add}" Height="200" CornerRadius="10"/>
+        <Button Content="quitter"
+                HorizontalAlignment="Center"
+                Command="{Binding $parent[Window].((viewModelsSource:MainWindowViewModel)DataContext).QuitLevel}" CommandParameter="{Binding scoreJoueur }"/>
+    </StackPanel>
 </UserControl>

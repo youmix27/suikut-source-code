@@ -37,6 +37,13 @@
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
+        <Button Content="Retour" 
+                Margin="20"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Center"
+                x:CompileBindings="False"
+                Command="{Binding $parent[Window].DataContext.GoMainMenu}"/>
     </StackPanel>
+    
     
 </UserControl>

@@ -15,7 +15,6 @@ public partial class App : Application
     public override void Initialize()
     {
         Locator.CurrentMutable.Register(() => new SuichukoService(new SuichukoContext()), typeof(ISuichukoService));
-        Locator.CurrentMutable.Register(() => new TutorielleLevelViewModel(), typeof(MainWindowViewModel));
         AvaloniaXamlLoader.Load(this);
     }
 

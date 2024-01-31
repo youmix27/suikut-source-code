@@ -396,7 +396,7 @@ public class SuichukoService : ISuichukoService
     {
         try
         {
-            return _context.Scores.Find(utilisateurId, niveauId);
+            return _context.Scores.Include(s => s.Niveau).Where(s => s.UtilisateurId == utilisateurId).Where(s => s.NiveauId == niveauId).FirstOrDefault();
         }
         catch
         {

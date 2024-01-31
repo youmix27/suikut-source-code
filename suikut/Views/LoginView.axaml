@@ -27,14 +27,15 @@
         <TextBlock FontSize="15"
                    Name="TextBlockErreur"
                    Foreground="Red"
-                   IsVisible="False"
+                   IsVisible="{Binding IsInvalid}"
                    Margin="10"
                    HorizontalAlignment="Center">Nom d'utilisateur ou mot de passe erroné</TextBlock>
         <Button Margin="10"
                 Width="250"
                 HorizontalAlignment="Center"
                 HorizontalContentAlignment="Center"
-                Click="Login">valider</Button>
+                x:CompileBindings="False"
+                Command="{Binding $parent[Window].DataContext.Login}">valider</Button>
         <Button Margin="10"
                 Width="250"
                 HorizontalAlignment="Center"
