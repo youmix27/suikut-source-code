@@ -8,6 +8,7 @@
              x:Class="suikut.Views.Niveaux.TutorielleLevelView"
              x:DataType="vm:TutorielleLevelViewModel">
     <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10">
+        
         <TextBlock  Text="{Binding scoreActuel}" FontSize="30" Width="500"/>
         <Button Content="+1" 
                 Command="{Binding Add}" 
@@ -19,5 +20,7 @@
                 Width="500"
                 VerticalContentAlignment="Center"
                 Command="{Binding $parent[Window].((viewModelsSource:MainWindowViewModel)DataContext).QuitLevel}" CommandParameter="{Binding scoreJoueur }"/>
+        <TextBlock Text="now playing :"  HorizontalAlignment="Center" FontSize="20"/>
+        <TextBlock Text="{Binding musique.Libelle}"  HorizontalAlignment="Center" FontSize="20"/>
     </StackPanel>
 </UserControl>

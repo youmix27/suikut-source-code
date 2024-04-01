@@ -77,7 +77,7 @@ public class SuichukoService : ISuichukoService
     {
         try
         {
-            return _context.Ambiances.Find(id);
+            return _context.Ambiances.Include(a => a.Musiques).Where(a => a.Id == id).FirstOrDefault();
         }
         catch
         {

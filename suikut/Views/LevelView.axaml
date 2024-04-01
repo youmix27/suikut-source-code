@@ -12,6 +12,11 @@
                     VerticalAlignment="Top"
                     HorizontalAlignment="Center"
                     Text="{Binding niveau.Libelle}"/>
+        <TextBlock FontSize="25"
+                   Margin="10"
+                   VerticalAlignment="Top"
+                   HorizontalAlignment="Center"
+                   Text="{Binding difficulte.Libelle}"/>
         
         <Grid >
             <Grid.ColumnDefinitions>

@@ -13,5 +13,7 @@
         <Button Content="quitter"
                 HorizontalAlignment="Center"
                 Command="{Binding $parent[Window].((viewModelsSource:MainWindowViewModel)DataContext).QuitLevel}" CommandParameter="{Binding scoreJoueur }"/>
+        <TextBlock Text="now playing :"  HorizontalAlignment="Center" FontSize="20"/>
+        <TextBlock Text="{Binding musique.Libelle}"  HorizontalAlignment="Center" FontSize="20"/>
     </StackPanel>
 </UserControl>

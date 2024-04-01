@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using ReactiveUI;
 using Splat;
 using suikut.Models;
@@ -20,12 +21,16 @@ public class TutorielleLevelViewModel : ViewModelBase
     }
 
     public Niveau niveau { get; set; }
+    public Ambiance ambiance { get; set; }
+    public Musique musique { get; set; }
     
     public TutorielleLevelViewModel(Niveau niveau)
     {
         SuichukoService = Locator.Current.GetService<ISuichukoService>();
         scoreJoueur = SuichukoService.FindScore(int.Parse(Environment.GetEnvironmentVariable("USER_ID")), niveau.Id); // on récupère l'ID de l'utilisateur connecté
         this.niveau = niveau;
+        ambiance = SuichukoService.FindAmbiance(niveau.AmbianceId);
+        musique = ambiance.Musiques.FirstOrDefault();
         scoreActuel = (int)scoreJoueur.Score1;
     }
 

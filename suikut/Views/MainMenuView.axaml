@@ -20,10 +20,6 @@
         <Button Margin="10"
                 Width="250"
                 HorizontalAlignment="Center"
-                HorizontalContentAlignment="Center">Paramètre</Button>
-        <Button Margin="10"
-                Width="250"
-                HorizontalAlignment="Center"
                 HorizontalContentAlignment="Center"
                 x:CompileBindings="False"
                 Command="{Binding $parent[Window].DataContext.GoLogin}">Se Déconnecter</Button>
