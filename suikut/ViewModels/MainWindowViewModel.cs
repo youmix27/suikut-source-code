@@ -16,18 +16,17 @@ public class MainWindowViewModel : ViewModelBase
     public MainWindowViewModel()
     {
         SuichukoService = Locator.Current.GetService<ISuichukoService>();
+        
         LoginViewModel = new LoginViewModel();
-        RegisterViewModel = new RegisterViewModel();
-        LevelSelectorViewModel = new LevelSelectorViewModel();
-        MainMenuViewModel = new MainMenuViewModel();
         _contentViewModel = LoginViewModel;
     }
 
     public LoginViewModel LoginViewModel { get; set; }
     public RegisterViewModel RegisterViewModel { get; set; }
-    public LevelSelectorViewModel LevelSelectorViewModel { get; }
+    public LevelSelectorViewModel LevelSelectorViewModel { get; set; }
     public LevelViewModel LevelMenuViewModel { get; set; }
     public MainMenuViewModel MainMenuViewModel { get; set; }
+    public UserViewModel UserViewModel { get; set; }
     
     
     public ViewModelBase ContentViewModel
@@ -51,12 +50,20 @@ public class MainWindowViewModel : ViewModelBase
         Utilisateur utilisateur = SuichukoService.FindUtilisateurByPseudo(LoginViewModel.Pseudo);
         if (utilisateur == null || !BCrypt.Net.BCrypt.Verify(LoginViewModel.MotDePasse, utilisateur.HashMdp))
         {
-            LoginViewModel.IsInvalid = true;
+            LoginViewModel.ErrorMessage = "Nom d'utilisateur ou mot de passe erronés";
+            return;
+        }
+
+        if (utilisateur.IsBanned)
+        {
+            LoginViewModel.ErrorMessage = "Utilisateur banni";
             return;
         }
         // On sauvegarde les inforamtions utilies sur l'utilisateur connecté dans nos variables d'environnement
         Environment.SetEnvironmentVariable("USER_PSEUDO", utilisateur.Pseudo);
+        Environment.SetEnvironmentVariable("USER_ROLE", utilisateur.IsAdmin ? "Administrator" : "User");
         Environment.SetEnvironmentVariable("USER_ID", utilisateur.Id.ToString());
+        MainMenuViewModel = new MainMenuViewModel();
         GoMainMenu();
     }
 
@@ -103,6 +110,7 @@ public class MainWindowViewModel : ViewModelBase
     
     public void GoLevelSelecorMenu()
     {
+        LevelSelectorViewModel = new LevelSelectorViewModel();
         ContentViewModel = LevelSelectorViewModel;
     }
     
@@ -116,10 +124,15 @@ public class MainWindowViewModel : ViewModelBase
         LevelMenuViewModel = new LevelViewModel((Niveau)niveau);
         ContentViewModel = LevelMenuViewModel;
     }
-
-    public void PlayLevel(object niveauObj)
+    
+    public void GoUserMenu()
     {
-        Niveau niveau = (Niveau)niveauObj;
+        UserViewModel = new UserViewModel();
+        ContentViewModel = UserViewModel;
+    }
+
+    public void PlayLevel(Niveau niveau)
+    {
         
         // Définir le string qui contient le nom du view model
         string nomViewModel = "suikut.ViewModels.Niveaux." + niveau.Libelle + "LevelViewModel, " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;

@@ -8,7 +8,7 @@
         x:Class="suikut.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
-        Title="Avalonia To Do List"
+        Title="Suikut"
         Content="{Binding ContentViewModel}">
 
 

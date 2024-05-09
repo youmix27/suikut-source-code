@@ -10,15 +10,15 @@ public class LoginViewModel : ViewModelBase
     [Required(ErrorMessage = "ce champ est nécessaire")]
     public string MotDePasse { get; set; }
 
-    private bool _IsInvalid;
-    public bool IsInvalid
+    private string _errorMessage;
+    public string ErrorMessage
     {
-        get => _IsInvalid;
-        set => this.RaiseAndSetIfChanged(ref _IsInvalid, value);
+        get => _errorMessage;
+        set => this.RaiseAndSetIfChanged(ref _errorMessage, value);
     }
 
     public LoginViewModel()
     {
-        IsInvalid = false;
+        ErrorMessage = "";
     }
 }

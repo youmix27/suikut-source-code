@@ -27,7 +27,6 @@ namespace suikut.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
                 optionsBuilder.UseSqlServer("Server=10.30.111.32;Database=Suichuko;User Id=Suichoku_user;TrustServerCertificate=true;Password=123+Aze;");
             }
         }
@@ -168,6 +167,10 @@ namespace suikut.Models
                     .HasMaxLength(255)
                     .IsUnicode(false)
                     .HasColumnName("pseudo");
+                
+                entity.Property(e => e.IsAdmin).HasColumnName("isAdmin");
+                
+                entity.Property(e => e.IsBanned).HasColumnName("isBanned");
             });
 
             OnModelCreatingPartial(modelBuilder);

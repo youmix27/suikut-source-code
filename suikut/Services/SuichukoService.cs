@@ -26,14 +26,6 @@ public class SuichukoService : ISuichukoService
 
 #region Ambiance
 
-    /*
-     * 
-     *  Méthode lié à la table AMBIANCE
-     * 
-     */
-    
-    
-    
     public void DeleteAmbiance(int id)
     {
         try
@@ -108,12 +100,6 @@ public class SuichukoService : ISuichukoService
     #endregion
 
 #region Difficulté
-
-    /*
-     *
-     *  Méthode lié à la table AMBIANCE
-     *
-     */
 
     public void DeleteDifficulte(int id)
     {
@@ -428,12 +414,28 @@ public class SuichukoService : ISuichukoService
 
 #region Utilisateur
 
+    public IEnumerable<Utilisateur> FindAllUtilisateursNonAdmin()
+    {
+        try
+        {
+            return _context.Utilisateurs.Where(u => u.IsAdmin == false).ToList();
+        }
+        catch
+        {
+            throw;
+        }
+    }
+
     public Utilisateur FindUtilisateurByPseudo(string pseudo)
     {
-
-        Utilisateur utilisateur = _context.Utilisateurs.Where(u => u.Pseudo == pseudo).FirstOrDefault();
-
-        return utilisateur;
+        try
+        {
+            return _context.Utilisateurs.Where(u => u.Pseudo == pseudo).FirstOrDefault();
+        }
+        catch
+        {
+            throw;
+        }
     }
     
     public void DeleteUtilisateur(int id)

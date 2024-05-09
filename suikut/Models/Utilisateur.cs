@@ -17,6 +17,10 @@ namespace suikut.Models
         public string? Pseudo { get; set; }
         public string? HashMdp { get; set; }
         public string? Email { get; set; }
+        
+        public bool IsAdmin { get; set; }
+        
+        public bool IsBanned { get; set; }
 
         public virtual ICollection<Score> Scores { get; set; }
     }

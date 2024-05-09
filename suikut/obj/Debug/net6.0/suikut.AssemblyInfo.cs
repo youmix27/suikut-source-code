@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("suikut")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a63eefd711d5a489dc2f82059cd75c294cffe1b6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3e5e99446383130a1efa2c2181e77d7a205d8928")]
 [assembly: System.Reflection.AssemblyProductAttribute("suikut")]
 [assembly: System.Reflection.AssemblyTitleAttribute("suikut")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

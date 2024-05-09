@@ -33,6 +33,20 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Score" Binding="{Binding Score1}"/>
                     <DataGridTextColumn Header="Pseudo" Binding="{Binding Utilisateur.Pseudo}"/>
+                    <DataGridTemplateColumn Header=""
+                                            IsVisible="{Binding isAdmin}">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="supprimer"
+                                        Margin="10"
+                                        Width="100"
+                                        HorizontalAlignment="Center"
+                                        HorizontalContentAlignment="Center"
+                                        Command="{Binding $parent[UserControl].((vm:LevelViewModel)DataContext).DeleteScore}" 
+                                        CommandParameter="{Binding }"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
 
