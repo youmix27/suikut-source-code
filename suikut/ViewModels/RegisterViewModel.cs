@@ -24,7 +24,6 @@ public class RegisterViewModel : ViewModelBase
     }
     [Required(ErrorMessage = "ce champ est nécessaire")]
     [MinLength(8, ErrorMessage = "le mot de passe doit faire 8 char minimum")]
-    [Compare("MotDePasseConfirme", ErrorMessage = "différent de l'autre mot de passe")]
     public string? MotDePasse
     {
         get { return _motDePasse; }
@@ -38,23 +37,22 @@ public class RegisterViewModel : ViewModelBase
         set { this.RaiseAndSetIfChanged(ref _email, value);  }
     }
     [Required(ErrorMessage = "ce champ est nécessaire")]
-    [Compare("MotDePasse", ErrorMessage = "différent de l'autre mot de passe")]
     public string? MotDePasseConfirme
     {
         get { return _motDePasseConfirme; }
         set { this.RaiseAndSetIfChanged(ref _motDePasseConfirme, value);  }
     }
     
-    private bool _IsPseudoInvalid;
-    public bool IsPseudoInvalid
+    private string _errorMessage;
+    public string errorMessage
     {
-        get => _IsPseudoInvalid;
-        set => this.RaiseAndSetIfChanged(ref _IsPseudoInvalid, value);
+        get => _errorMessage;
+        set => this.RaiseAndSetIfChanged(ref _errorMessage, value);
     }
 
     public RegisterViewModel()
     {
-        _IsPseudoInvalid = false;
+        _errorMessage = "";
     }
 
     public void Register()

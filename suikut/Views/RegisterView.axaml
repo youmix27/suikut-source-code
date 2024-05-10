@@ -16,12 +16,6 @@
                  Width="350"
                  AcceptsReturn="True"
                  Watermark="pseudo"/>
-        <TextBlock FontSize="15"
-                   Name="TextBlockErreur"
-                   Foreground="Red"
-                   IsVisible="{Binding IsPseudoInvalid}"
-                   Margin="10"
-                   HorizontalAlignment="Center">Nom d'utilisateur déjà utilisé</TextBlock>
         <TextBox Name = "TextBoxEmail"
                  Text="{Binding Email}"
                  Margin="10"
@@ -42,6 +36,12 @@
                  AcceptsReturn="True"
                  PasswordChar="*"
                  Watermark="confirmation mot de passe"/>
+        <TextBlock FontSize="15"
+                   Name="TextBlockErreur"
+                   Foreground="Red"
+                   Margin="10"
+                   HorizontalAlignment="Center"
+                   Text="{Binding errorMessage}"/>
         <Button Margin="10"
                 Width="250"
                 HorizontalAlignment="Center"

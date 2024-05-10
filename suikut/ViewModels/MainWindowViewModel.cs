@@ -45,6 +45,7 @@ public class MainWindowViewModel : ViewModelBase
     {
         if (LoginViewModel.Pseudo.IsNullOrEmpty()|| LoginViewModel.MotDePasse.IsNullOrEmpty()) // on vérifie que les inputs soit remplit
         {
+            LoginViewModel.ErrorMessage = "Veuillez remplir les champs";
             return;
         }
         Utilisateur utilisateur = SuichukoService.FindUtilisateurByPseudo(LoginViewModel.Pseudo);
@@ -76,11 +77,16 @@ public class MainWindowViewModel : ViewModelBase
         Utilisateur utilisateurVerification = SuichukoService.FindUtilisateurByPseudo(RegisterViewModel.Pseudo); // vérification de l'unicité du pseudo
         if (utilisateurVerification != null)
         {
-            RegisterViewModel.IsPseudoInvalid = true;
+            RegisterViewModel.errorMessage = "nom d'utilisateur deja utilisé";
             return;
         }
-        RegisterViewModel.IsPseudoInvalid = false;
-        if (RegisterViewModel.MotDePasse != RegisterViewModel.MotDePasseConfirme || (!RegisterViewModel.Email.Contains('@') || RegisterViewModel.Email.StartsWith('@') ||  RegisterViewModel.Email.EndsWith('@')) || RegisterViewModel.MotDePasse.Length < 8) //on vérifie que la validité des champs
+        if (RegisterViewModel.MotDePasse != RegisterViewModel.MotDePasseConfirme)
+        {
+            RegisterViewModel.errorMessage = "les mots de passe ne sont pas similaires";
+            return;
+        }
+        RegisterViewModel.errorMessage = "";
+        if ((!RegisterViewModel.Email.Contains('@') || RegisterViewModel.Email.StartsWith('@') ||  RegisterViewModel.Email.EndsWith('@')) || RegisterViewModel.MotDePasse.Length < 8) //on vérifie que la validité des champs
         {
             return;
         }
