@@ -106,7 +106,7 @@
                 HorizontalAlignment="Center"
                 HorizontalContentAlignment="Center"
                 x:CompileBindings="False"
-                Command="{Binding $parent[Window].DataContext.GoLevelSelecorMenu}" />
+                Command="{Binding $parent[Window].DataContext.GoLevelSelectorMenu}" />
     </StackPanel>
 </Grid>
 
