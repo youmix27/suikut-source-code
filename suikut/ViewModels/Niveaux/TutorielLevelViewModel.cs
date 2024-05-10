@@ -7,7 +7,7 @@ using suikut.Services;
 
 namespace suikut.ViewModels.Niveaux;
 
-public class TestLevelViewModel : ViewModelBase
+public class TutorielLevelViewModel : ViewModelBase
 {
     private readonly ISuichukoService SuichukoService;
 
@@ -24,7 +24,7 @@ public class TestLevelViewModel : ViewModelBase
     public Ambiance ambiance { get; set; }
     public Musique musique { get; set; }
     
-    public TestLevelViewModel(Niveau niveau)
+    public TutorielLevelViewModel(Niveau niveau)
     {
         SuichukoService = Locator.Current.GetService<ISuichukoService>();
         scoreJoueur = SuichukoService.FindScore(int.Parse(Environment.GetEnvironmentVariable("USER_ID")), niveau.Id); // on récupère l'ID de l'utilisateur connecté
@@ -39,4 +39,5 @@ public class TestLevelViewModel : ViewModelBase
         scoreActuel += 1;
         scoreJoueur.Score1 += 1;
     }
+    
 }

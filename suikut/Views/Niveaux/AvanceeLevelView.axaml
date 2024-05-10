@@ -5,8 +5,8 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              xmlns:vm="using:suikut.ViewModels.Niveaux"
              xmlns:viewModelsSource="clr-namespace:suikut.ViewModels"
-             x:Class="suikut.Views.Niveaux.DebutLevelView"
-             x:DataType="vm:DebutLevelViewModel">
+             x:Class="suikut.Views.Niveaux.AvanceeLevelView"
+             x:DataType="vm:AvanceeLevelViewModel">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/> <!-- Première rangée pour le premier TextBlock -->

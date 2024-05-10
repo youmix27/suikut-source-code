@@ -4,9 +4,9 @@ using Avalonia.Markup.Xaml;
 
 namespace suikut.Views.Niveaux;
 
-public partial class Test3LevelView : UserControl
+public partial class TutorielLevelView : UserControl
 {
-    public Test3LevelView()
+    public TutorielLevelView()
     {
         InitializeComponent();
     }

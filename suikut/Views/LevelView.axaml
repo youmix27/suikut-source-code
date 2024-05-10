@@ -6,62 +6,92 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="suikut.Views.LevelView"
              x:DataType="vm:LevelViewModel">
-    <StackPanel Margin="20" >
-        <TextBlock FontSize="50"
-                    Margin="10"
-                    VerticalAlignment="Top"
-                    HorizontalAlignment="Center"
-                    Text="{Binding niveau.Libelle}"/>
-        <TextBlock FontSize="25"
-                   Margin="10"
-                   VerticalAlignment="Top"
-                   HorizontalAlignment="Center"
-                   Text="{Binding difficulte.Libelle}"/>
-        
-        <Grid >
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-            </Grid.ColumnDefinitions>
+    
+    <Grid Margin="20">
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" /> <!-- Colonne pour le tableau des scores -->
+        <ColumnDefinition Width="*" /> <!-- Colonne pour le tableau des objectifs -->
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/> <!-- Titre du niveau -->
+        <RowDefinition Height="Auto"/> <!-- Difficulté du niveau -->
+        <RowDefinition Height="*"/>    <!-- Tableau des scores scrollable et Tableau des objectifs -->
+        <RowDefinition Height="Auto"/> <!-- Boutons en bas -->
+    </Grid.RowDefinitions>
 
-            <!-- Tableau des scores -->
-            <DataGrid Margin="20" 
-                      ItemsSource="{Binding scoresNiveau}"
-                      GridLinesVisibility="All"
-                      BorderThickness="1"
-                      HorizontalAlignment="Center">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Score" Binding="{Binding Score1}"/>
-                    <DataGridTextColumn Header="Pseudo" Binding="{Binding Utilisateur.Pseudo}"/>
-                    <DataGridTemplateColumn Header=""
-                                            IsVisible="{Binding isAdmin}">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Button Content="supprimer"
-                                        Margin="10"
-                                        Width="100"
-                                        HorizontalAlignment="Center"
-                                        HorizontalContentAlignment="Center"
-                                        Command="{Binding $parent[UserControl].((vm:LevelViewModel)DataContext).DeleteScore}" 
-                                        CommandParameter="{Binding }"/>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                </DataGrid.Columns>
-            </DataGrid>
+    <!-- Titre du niveau -->
+    <TextBlock Grid.Row="0" Grid.ColumnSpan="2"
+               FontSize="50"
+               Margin="10"
+               VerticalAlignment="Top"
+               HorizontalAlignment="Center"
+               Text="{Binding niveau.Libelle}"/>
 
-            <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Votre Score : "/>
-                    <TextBlock Text="{Binding scoreJoueur.Score1}"></TextBlock>
-                </StackPanel>
-                <TextBlock Text="objectifs :" Margin="10"/>
-                <CheckBox IsEnabled="False" IsChecked="{Binding hasMinScore}" Content="{Binding niveau.ScoreMin}"/>
-                <CheckBox IsEnabled="False" IsChecked="{Binding hasMidScore}" Content="{Binding niveau.ScoreMid}"/>
-                <CheckBox IsEnabled="False" IsChecked="{Binding hasMaxScore}" Content="{Binding niveau.ScoreMax}"/>
-                
+    <!-- Difficulté du niveau -->
+    <TextBlock Grid.Row="1" Grid.ColumnSpan="2"
+               FontSize="25"
+               Margin="10"
+               VerticalAlignment="Top"
+               HorizontalAlignment="Center"
+               Text="{Binding difficulte.Libelle}"/>
+
+    <!-- Tableau des scores scrollable -->
+    <Border Grid.Row="2"
+            Margin="40"
+            Width="NaN">
+        <ScrollViewer Grid.Row="2" Grid.Column="0" VerticalScrollBarVisibility="Auto" HorizontalAlignment="Center">
+            <Grid VerticalAlignment="Center" HorizontalAlignment="Stretch">
+                <DataGrid Margin="20"
+                          ItemsSource="{Binding scoresNiveau}"
+                          GridLinesVisibility="All"
+                          BorderThickness="1"
+                          HorizontalAlignment="Center">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Pseudo" Binding="{Binding Utilisateur.Pseudo}"/>
+                        <DataGridTextColumn Header="Score" Binding="{Binding Score1}"/>
+                        <DataGridTemplateColumn Header="" IsVisible="{Binding isAdmin}">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="supprimer"
+                                            Margin="10"
+                                            Width="100"
+                                            Background="Red"
+                                            HorizontalAlignment="Center"
+                                            HorizontalContentAlignment="Center"
+                                            Command="{Binding $parent[UserControl].((vm:LevelViewModel)DataContext).DeleteScore}" 
+                                            CommandParameter="{Binding }"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </ScrollViewer>
+    </Border>
+
+    <!-- Tableau des objectifs -->
+    <Grid Grid.Row="2" Grid.Column="1" Margin="20">
+        <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/> <!-- Votre Score -->
+                <RowDefinition Height="Auto"/> <!-- Texte "objectifs" -->
+                <RowDefinition Height="Auto"/> <!-- Objectifs -->
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Orientation="Horizontal">
+                <TextBlock Grid.Row="0" Text="Votre Score : " Margin="10" FontSize="25"/>
+                <TextBlock Grid.Row="0" Text="{Binding scoreJoueur.Score1}" Margin="10" FontSize="25"/>
+            </StackPanel>
+            <TextBlock Grid.Row="1" Text="objectifs :" Margin="10" FontSize="25"/>
+            <StackPanel Grid.Row="2" Orientation="Vertical" Margin="10" >
+                <CheckBox IsEnabled="False" IsChecked="{Binding hasMinScore}" Content="{Binding niveau.ScoreMin}" FontSize="25"/>
+                <CheckBox IsEnabled="False" IsChecked="{Binding hasMidScore}" Content="{Binding niveau.ScoreMid}" FontSize="25"/>
+                <CheckBox IsEnabled="False" IsChecked="{Binding hasMaxScore}" Content="{Binding niveau.ScoreMax}" FontSize="25"/>
             </StackPanel>
         </Grid>
+    </Grid>
+
+    <!-- Boutons -->
+    <StackPanel Grid.Row="3" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
         <Button Content="Jouer"
                 Margin="10"
                 Width="250"
@@ -69,7 +99,7 @@
                 HorizontalContentAlignment="Center"
                 Command="{Binding $parent[Window].((vm:MainWindowViewModel)DataContext).PlayLevel}" 
                 CommandParameter="{Binding niveau}"/>
-        
+
         <Button Content="Annuler"
                 Margin="10"
                 Width="250"
@@ -78,5 +108,7 @@
                 x:CompileBindings="False"
                 Command="{Binding $parent[Window].DataContext.GoLevelSelecorMenu}" />
     </StackPanel>
+</Grid>
+
     
 </UserControl>

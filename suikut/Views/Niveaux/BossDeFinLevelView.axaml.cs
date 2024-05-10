@@ -4,9 +4,9 @@ using Avalonia.Markup.Xaml;
 
 namespace suikut.Views.Niveaux;
 
-public partial class TutorielleLevelView : UserControl
+public partial class BossDeFinLevelView : UserControl
 {
-    public TutorielleLevelView()
+    public BossDeFinLevelView()
     {
         InitializeComponent();
     }

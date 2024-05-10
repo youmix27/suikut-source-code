@@ -21,7 +21,7 @@
                             <ItemsControl ItemsSource="{Binding Niveaus}">
                                 <ItemsControl.ItemsPanel>
                                     <ItemsPanelTemplate>
-                                        <WrapPanel />
+                                        <WrapPanel HorizontalAlignment="Center"/>
                                     </ItemsPanelTemplate>
                                 </ItemsControl.ItemsPanel>
                                 <ItemsControl.ItemTemplate>
@@ -29,6 +29,8 @@
                                         <Button Content="{Binding Libelle}" 
                                                 Margin="5"
                                                 x:CompileBindings="False"
+                                                Background="Azure"
+                                                Foreground="Black"
                                                 Command="{Binding $parent[Window].DataContext.GoLevelMenu}" CommandParameter="{Binding }"></Button>
                                     </DataTemplate>
                                 </ItemsControl.ItemTemplate>

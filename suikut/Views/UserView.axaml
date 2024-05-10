@@ -6,20 +6,27 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="suikut.Views.UserView"
              x:DataType="vm:UserViewModel">
-    <StackPanel Margin="20" >
-        <TextBlock FontSize="50"
-                    Margin="10"
-                    VerticalAlignment="Top"
-                    HorizontalAlignment="Center"
-                    Text="Gestion des utilisateurs"/>
-        <Grid >
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"/>
-            </Grid.ColumnDefinitions>
+    <Grid>
+    <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/> <!-- Titre en haut -->
+        <RowDefinition Height="*"/>    <!-- Tableau au milieu -->
+        <RowDefinition Height="Auto"/> <!-- Bouton en bas -->
+    </Grid.RowDefinitions>
 
-            <!-- Tableau des utilisateurs -->
-            <DataGrid Margin="20" 
-                      ItemsSource="{Binding utilisateursNonAdmin}"
+    <!-- Titre -->
+    <TextBlock Grid.Row="0" 
+               FontSize="50"
+               Margin="10"
+               VerticalAlignment="Top"
+               HorizontalAlignment="Center"
+               Text="Gestion des utilisateurs"/>
+
+    <!-- Tableau des utilisateurs -->
+    <Border Grid.Row="1" 
+            Margin="20"
+            Width="NaN">
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <DataGrid ItemsSource="{Binding utilisateursNonAdmin}"
                       GridLinesVisibility="All"
                       BorderThickness="1"
                       HorizontalAlignment="Center">
@@ -30,36 +37,41 @@
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel>
-                                <Button Content="Bannir"
-                                        Margin="10"
-                                        Width="100"
-                                        HorizontalAlignment="Center"
-                                        HorizontalContentAlignment="Center"
-                                        IsVisible="{Binding !IsBanned}"
-                                        Command="{Binding $parent[UserControl].((vm:UserViewModel)DataContext).Ban}" 
-                                        CommandParameter="{Binding }"/>
-                                <Button Content="Débannir"
-                                        Margin="10"
-                                        Width="100"
-                                        HorizontalAlignment="Center"
-                                        HorizontalContentAlignment="Center"
-                                        IsVisible="{Binding IsBanned}"
-                                        Command="{Binding $parent[UserControl].((vm:UserViewModel)DataContext).Unban}" 
-                                        CommandParameter="{Binding }"/>
+                                    <Button Content="Bannir"
+                                            Margin="10"
+                                            Width="100"
+                                            Background="Red"
+                                            HorizontalAlignment="Center"
+                                            HorizontalContentAlignment="Center"
+                                            IsVisible="{Binding !IsBanned}"
+                                            Command="{Binding $parent[UserControl].((vm:UserViewModel)DataContext).Ban}" 
+                                            CommandParameter="{Binding }"/>
+                                    <Button Content="Débannir"
+                                            Margin="10"
+                                            Width="100"
+                                            Background="Green"
+                                            HorizontalAlignment="Center"
+                                            HorizontalContentAlignment="Center"
+                                            IsVisible="{Binding IsBanned}"
+                                            Command="{Binding $parent[UserControl].((vm:UserViewModel)DataContext).Unban}" 
+                                            CommandParameter="{Binding }"/>
                                 </StackPanel>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
+        </ScrollViewer>
+    </Border>
 
-        </Grid>
-        
-        <Button Content="Quitter"
-                Margin="10"
-                Width="250"
-                HorizontalAlignment="Center"
-                HorizontalContentAlignment="Center"
-                Command="{Binding $parent[Window].((vm:MainWindowViewModel)DataContext).GoMainMenu}" />
-    </StackPanel>
+    <!-- Bouton Quitter en bas -->
+    <Button Grid.Row="2" 
+            Content="Quitter"
+            Margin="10"
+            Width="250"
+            HorizontalAlignment="Center"
+            HorizontalContentAlignment="Center"
+            Command="{Binding $parent[Window].((vm:MainWindowViewModel)DataContext).GoMainMenu}" />
+</Grid>
+
 </UserControl>

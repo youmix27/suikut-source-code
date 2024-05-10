@@ -336,7 +336,7 @@ public class SuichukoService : ISuichukoService
 
     public IEnumerable<Score> FinScoresByNiveauOrderByScore(Niveau niveau)
     {
-        IEnumerable<Score> scores = _context.Scores.Include(s => s.Utilisateur).Where(s => s.Niveau == niveau).OrderByDescending(s => s.Score1).ToList();
+        IEnumerable<Score> scores = _context.Scores.Include(s => s.Utilisateur).Where(s => s.Score1 != 0).Where(s => s.Niveau == niveau).OrderByDescending(s => s.Score1).ToList();
         return scores;
     }
     public void DeleteScore(int utilisateurId, int niveauId)

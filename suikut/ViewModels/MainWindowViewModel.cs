@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using suikut.Services;
 using ReactiveUI;
 using Splat;
@@ -139,9 +140,11 @@ public class MainWindowViewModel : ViewModelBase
 
     public void PlayLevel(Niveau niveau)
     {
+        // On traite le nom du niveau afin de le rendre utilisable
+        string nomNiveau = RemoveAccentsAndSpaces(niveau.Libelle);
         
         // Définir le string qui contient le nom du view model
-        string nomViewModel = "suikut.ViewModels.Niveaux." + niveau.Libelle + "LevelViewModel, " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;
+        string nomViewModel = "suikut.ViewModels.Niveaux." + nomNiveau + "LevelViewModel, " + System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;
 
         // Obtenir le type du view model à partir du nom
         Type typeViewModel = Type.GetType(nomViewModel);
@@ -159,5 +162,44 @@ public class MainWindowViewModel : ViewModelBase
         Score scoreLevel = (Score)scoreLevelObj;
         SuichukoService.UpdateScore(scoreLevel); // on sauvegarde le score du joueur
         GoLevelMenu(scoreLevel.Niveau);
+    }
+    
+    /*
+     * Retourne un chaine de caractères sans ses espaces et accents
+     */
+    public string RemoveAccentsAndSpaces(string input)
+    {
+        StringBuilder sb = new StringBuilder();
+        foreach (char c in input)
+        {
+            if (char.IsLetter(c))
+            {
+                sb.Append(RemoveAccent(c));
+            }
+            else if (c == ' ')
+            {
+                sb.Append("");
+            }
+        }
+        return sb.ToString();
+    }
+    
+    /*
+     * Retourne un caractère sans son accent
+     */
+    public char RemoveAccent(char c)
+    {
+        string withAccent = "ÀÁÂÃÄÅàáâãäåÇçÈÉÊËèéêëÌÍÎÏìíîïÑñÒÓÔÕÖØòóôõöøÙÚÛÜùúûüÝýÿ";
+        string withoutAccent = "AAAAAAaaaaaaCcEEEEeeeeIIIIiiiiNnOOOOOOooooooUUUUuuuuYyy";
+        
+        int index = withAccent.IndexOf(c);
+        if (index >= 0)
+        {
+            return withoutAccent[index];
+        }
+        else
+        {
+            return c;
+        }
     }
 }
