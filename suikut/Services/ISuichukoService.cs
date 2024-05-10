@@ -44,7 +44,7 @@ public interface ISuichukoService
     
     // Utilisateur
     IEnumerable<Utilisateur> FindAllUtilisateursNonAdmin();
-    Utilisateur FindUtilisateurByPseudo(string pseudo);
+    Utilisateur? FindUtilisateurByPseudo(string pseudo);
     IEnumerable<Utilisateur> FindAllUtilisateurs();
     void InsertUtilisateur(Utilisateur utilisateur);
     void UpdateUtilisateur(Utilisateur utilisateur);

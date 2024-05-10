@@ -8,6 +8,6 @@ public partial class UserView : UserControl
 {
     public UserView()
     {
-        InitializeComponent();
+        AvaloniaXamlLoader.Load(this);
     }
 }

@@ -115,7 +115,7 @@ public class MainWindowViewModel : ViewModelBase
         ContentViewModel = LoginViewModel;
     }
     
-    public void GoLevelSelecorMenu()
+    public void GoLevelSelectorMenu()
     {
         LevelSelectorViewModel = new LevelSelectorViewModel();
         ContentViewModel = LevelSelectorViewModel;

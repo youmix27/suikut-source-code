@@ -8,6 +8,6 @@ public partial class LevelView : UserControl
 {
     public LevelView()
     {
-        InitializeComponent();
+        AvaloniaXamlLoader.Load(this);
     }
 }

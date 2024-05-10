@@ -426,11 +426,16 @@ public class SuichukoService : ISuichukoService
         }
     }
 
-    public Utilisateur FindUtilisateurByPseudo(string pseudo)
+    public Utilisateur? FindUtilisateurByPseudo(string pseudo)
     {
         try
         {
-            return _context.Utilisateurs.Where(u => u.Pseudo == pseudo).FirstOrDefault();
+            Utilisateur? utilisateur = _context.Utilisateurs.FirstOrDefault(u => u.Pseudo == pseudo);
+            if (utilisateur != null)
+            {
+                _context.Entry(utilisateur).Reload(); //on met à jour les données de notre entité avec celle de la BDD
+            }
+            return utilisateur;
         }
         catch
         {

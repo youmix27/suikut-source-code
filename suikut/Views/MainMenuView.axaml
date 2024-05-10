@@ -16,7 +16,7 @@
                 HorizontalAlignment="Center"
                 HorizontalContentAlignment="Center"
                 x:CompileBindings="False"
-                Command="{Binding $parent[Window].DataContext.GoLevelSelecorMenu}">Jouer</Button>
+                Command="{Binding $parent[Window].DataContext.GoLevelSelectorMenu}">Jouer</Button>
         <Button Margin="10"
                 Width="250"
                 HorizontalAlignment="Center"
